@@ -4,17 +4,42 @@ Homini is a minimalist dotfiles manager using Nix inspired by
 [Home Manager](https://github.com/nix-community/home-manager) and
 [GNU Stow](https://www.gnu.org/software/stow/).
 
-## Why Homini when we have Home Manager?
+## How to use Homini?
 
-This [Article](https://www.fbrs.io/nix-hm-reflections) by [Florian Beeres](https://github.com/cideM/)
-is what inspired me to write Homini and this quote sums up why
+Consider the following snipet
 
-> At the end of the day I really don’t need the per-user installation of packages
-> and elaborate modules that Home Manager gives me.
-> I’d be perfectly content with providing a list of packages to install system-wide
-> and a few basic primitives to generate configuration files in my home folder.
+```nix
+homini = {
+  enable = true;
+  dir = ./dotfiles;
+};
+```
 
-## NixOS
+this will link the `dotfiles` directory
+
+```
+dotfiles
+└── .config
+    └── git
+        ├── config
+        ├── ignore
+        ├── personal
+        └── work
+```
+
+to your `$HOME` directory.
+
+```
+$HOME
+└── .config
+    └── git
+        ├── config -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/config
+        ├── ignore -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/ignore
+        ├── personal -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/personal
+        └── work -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/work
+```
+
+### NixOS
 
 ```nix
 {
@@ -43,4 +68,14 @@ is what inspired me to write Homini and this quote sums up why
 }
 ```
 
-## [WIP] MacOS (nix-darwin)
+### [WIP] MacOS (nix-darwin)
+
+## Why Homini when we have Home Manager?
+
+This [Article](https://www.fbrs.io/nix-hm-reflections) by [Florian Beeres](https://github.com/cideM/)
+is what inspired me to write Homini and this quote sums up why
+
+> At the end of the day I really don’t need the per-user installation of packages
+> and elaborate modules that Home Manager gives me.
+> I’d be perfectly content with providing a list of packages to install system-wide
+> and a few basic primitives to generate configuration files in my home folder.
