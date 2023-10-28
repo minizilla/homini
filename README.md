@@ -6,7 +6,7 @@ Homini is a minimalist dotfiles manager using Nix inspired by
 
 ## Why Homini when we have Home Manager?
 
-This [Article](https://www.fbrs.io/nix-hm-reflections) by Florian Beeres
+This [Article](https://www.fbrs.io/nix-hm-reflections) by [Florian Beeres](https://github.com/cideM/)
 is what inspired me to write Homini and this quote sums up why
 
 > At the end of the day I really don’t need the per-user installation of packages
