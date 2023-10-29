@@ -4,6 +4,20 @@ Homini is a minimalist dotfiles manager using Nix inspired by
 [Home Manager](https://github.com/nix-community/home-manager) and
 [GNU Stow](https://www.gnu.org/software/stow/).
 
+***
+
+**NOTICE: Homini is usable but the API is still unstable.**
+The API might be changed due to upcomming features down below:
+
+- [x] NixOS support
+- [ ] Multi-user support
+- [ ] nix-darwin support
+- [ ] Standalone support
+
+Despite above new feature, the heart of Homini will remain the same: **minimalist**.
+
+***
+
 ## How to use Homini?
 
 Consider the following snipet
