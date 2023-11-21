@@ -4,7 +4,7 @@ let
   cfg = config.homini;
 in
 {
-  imports = [ ./activation.nix ];
+  imports = [ ./module.nix ];
 
   config = lib.mkIf cfg.enable {
     system.userActivationScripts.homini.text = ''
