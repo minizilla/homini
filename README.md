@@ -47,13 +47,15 @@ to your `$HOME` directory.
 $HOME
 └── .config
     └── git
-        ├── config -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/config
-        ├── ignore -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/ignore
-        ├── personal -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/personal
-        └── work -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/work
+        ├── config -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/config
+        ├── ignore -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/ignore
+        ├── personal -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/personal
+        └── work -> /nix/store/xqj0sf5q4q35q1hp19yyhfp8sbp0zrwa-dotfiles/.config/git/work
 ```
 
 ### NixOS
+
+Rebuild the following flake with `nixos-rebuild switch --flake .#machine`.
 
 ```nix
 {
@@ -85,6 +87,8 @@ $HOME
 ### [WIP] MacOS (nix-darwin)
 
 ### Standalone
+
+Run the following flake with `nix run`.
 
 ```nix
 {
