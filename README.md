@@ -12,7 +12,7 @@ The API might be changed due to upcomming features down below:
 - [x] NixOS support
 - [ ] Multi-user support
 - [ ] nix-darwin support
-- [ ] Standalone support
+- [x] Standalone support
 
 Despite above new feature, the heart of Homini will remain the same: **minimalist**.
 
@@ -83,6 +83,33 @@ $HOME
 ```
 
 ### [WIP] MacOS (nix-darwin)
+
+### Standalone
+
+```nix
+{
+  description = "My dotfiles";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    homini.url = "github:minizilla/homini";
+    homini.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = { self, nixpkgs, homini, ... }:
+    let
+      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
+    in
+    {
+      packages = forAllSystems (system: {
+        default = homini.standalone {
+          pkgs = nixpkgs.legacyPackages.${system};
+          dir = ./dotfiles;
+        };
+      });
+    };
+}
+```
 
 ## Why Homini when we have Home Manager?
 

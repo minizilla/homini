@@ -8,5 +8,6 @@
       homini = import ./nixos.nix;
       default = homini;
     };
+    standalone = import ./standalone.nix;
   };
 }
