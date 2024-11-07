@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 let
   cfg = config.homini;
@@ -8,7 +8,7 @@ in
 
   config = lib.mkIf cfg.enable {
     system.userActivationScripts.homini.text = ''
-      exec "${cfg.activationPackage}/bin/homini"
+      "${cfg.activationPackage}/bin/homini"
     '';
   };
 }

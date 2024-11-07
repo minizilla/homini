@@ -3,7 +3,7 @@
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-  outputs = { self, nixpkgs, ... }: {
+  outputs = { ... }: {
     nixosModules = rec {
       homini = import ./nixos.nix;
       default = homini;
