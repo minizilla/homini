@@ -1,12 +1,15 @@
 { lib, pkgs }:
 
 let
-  activation-bin-path = lib.makeBinPath (with pkgs; [
-    nix
-    bash
-    coreutils
-    findutils
-  ]);
+  activation-bin-path = lib.makeBinPath (
+    with pkgs;
+    [
+      nix
+      bash
+      coreutils
+      findutils
+    ]
+  );
 
   cleanup = pkgs.writeShellScript "cleanup" ''
     old_dotfiles=$1
