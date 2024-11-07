@@ -10,8 +10,7 @@ Homini is a minimalist dotfiles manager using Nix inspired by
 The API might be changed due to upcomming features down below:
 
 - [x] NixOS support
-- [ ] Multi-user support
-- [ ] nix-darwin support
+- [ ] MacOS (nix-darwin) support
 - [x] Standalone support
 
 Despite above new feature, the heart of Homini will remain the same: **minimalist**.
