@@ -1,21 +1,8 @@
 # Homini
 
-Homini is a minimalist dotfiles manager using Nix inspired by
+Homini is a **minimalist dotfiles manager** using Nix inspired by
 [Home Manager](https://github.com/nix-community/home-manager) and
 [GNU Stow](https://www.gnu.org/software/stow/).
-
-***
-
-**NOTICE: Homini is usable but the API is still unstable.**
-The API might be changed due to upcomming features down below:
-
-- [x] NixOS support
-- [ ] MacOS (nix-darwin) support
-- [x] Standalone support
-
-Despite above new feature, the heart of Homini will remain the same: **minimalist**.
-
-***
 
 ## How to use Homini?
 
@@ -66,7 +53,7 @@ Rebuild the following flake with `nixos-rebuild switch --flake .#machine`.
     homini.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, homini, ... }: {
+  outputs = { nixpkgs, homini, ... }: {
     nixosConfigurations.machine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -83,7 +70,38 @@ Rebuild the following flake with `nixos-rebuild switch --flake .#machine`.
 }
 ```
 
-### [WIP] MacOS (nix-darwin)
+### MacOS (nix-darwin)
+
+Rebuild the following flake with `darwin-rebuild switch --flake .#machine`.
+
+```nix
+{
+  description = "My MacOS (nix-darwin) Configurations";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    darwin.url = "github:LnL7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    homini.url = "github:minizilla/homini";
+    homini.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = { darwin, homini, ... }: {
+    nixosConfigurations.machine = darwin.lib.darwinSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./configuration.nix
+        homini.darwinModules.homini {
+          homini = {
+            enable = true;
+            dir = ./dotfiles;
+          };
+        }
+      ];
+    };
+  };
+}
+```
 
 ### Standalone
 
@@ -99,7 +117,7 @@ Run the following flake with `nix run`.
     homini.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, homini, ... }:
+  outputs = { nixpkgs, homini, ... }:
     let
       forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
     in

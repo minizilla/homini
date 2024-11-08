@@ -10,6 +10,10 @@
         homini = import ./nixos.nix;
         default = homini;
       };
+      darwinModules = rec {
+        homini = import ./darwin.nix;
+        default = homini;
+      };
       standalone = import ./standalone.nix;
     };
 }
