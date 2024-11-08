@@ -87,7 +87,7 @@ Rebuild the following flake with `darwin-rebuild switch --flake .#machine`.
   };
 
   outputs = { darwin, homini, ... }: {
-    nixosConfigurations.machine = darwin.lib.darwinSystem {
+    darwinConfigurations.machine = darwin.lib.darwinSystem {
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
